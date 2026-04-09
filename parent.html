@@ -3,133 +3,185 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LearnNest Parent Upload</title>
+  <title>LearnNest — Parent Dashboard</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .parent-wrap       { max-width: 780px; margin: 0 auto; padding: 16px 16px 48px; }
+    .parent-header     { display: flex; align-items: center; justify-content: space-between; padding: 16px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+    .parent-logo       { font-size: 20px; font-weight: 700; color: var(--primary); }
+    .parent-logo span  { font-weight: 400; color: var(--muted); font-size: 14px; margin-left: 8px; }
+    .pcard             { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
+    .pcard-title       { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 14px; }
+    .quick-links       { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .qlink             { display: flex; flex-direction: column; gap: 4px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; text-decoration: none; color: var(--text); transition: border-color .15s; }
+    .qlink:hover       { border-color: var(--primary); }
+    .qlink-icon        { font-size: 22px; }
+    .qlink-label       { font-size: 13px; font-weight: 600; }
+    .qlink-sub         { font-size: 12px; color: var(--muted); }
+    .steps             { display: flex; flex-direction: column; gap: 12px; }
+    .step              { display: flex; gap: 14px; align-items: flex-start; }
+    .step-num          { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .step-body         { flex: 1; }
+    .step-title        { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .step-desc         { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .step-desc code    { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; font-size: 12px; color: var(--text); }
+    .type-table        { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .type-table th     { text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: 6px 10px; border-bottom: 1px solid var(--border); }
+    .type-table td     { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .type-table tr:last-child td { border-bottom: none; }
+    .type-tag          { display: inline-block; background: var(--primary-soft); color: var(--primary); border-radius: 4px; padding: 2px 7px; font-size: 12px; font-weight: 600; font-family: monospace; }
+    .stats-grid        { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+    .stat-box          { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; text-align: center; }
+    .stat-num          { font-size: 28px; font-weight: 700; color: var(--primary); line-height: 1; }
+    .stat-label        { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    .subject-rows      { display: flex; flex-direction: column; gap: 8px; }
+    .subject-row       { display: flex; align-items: center; gap: 10px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; }
+    .subject-dot       { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .subject-name      { flex: 1; font-size: 13px; font-weight: 600; }
+    .subject-counts    { font-size: 12px; color: var(--muted); text-align: right; }
+    .pill-status       { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+    .pill-ok           { background: #dcfce7; color: #166534; }
+    .pill-warn         { background: #fef9c3; color: #854d0e; }
+    .loading-msg       { color: var(--muted); font-size: 13px; padding: 12px 0; }
+    .alert-box         { background: #fef2f2; border: 1px solid #fecaca; border-radius: var(--radius-sm); padding: 12px 14px; font-size: 13px; color: #991b1b; margin-top: 12px; display: none; }
+    @media (max-width: 480px) {
+      .quick-links    { grid-template-columns: 1fr; }
+      .stats-grid     { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="hero">
-      <div>
-        <p class="eyebrow">Parent admin</p>
-        <h1>Parent Content Manager</h1>
-        <p class="hero-text">Upload a CSV with source folder information and update the learning library for the student app automatically.</p>
-      </div>
+<div class="parent-wrap">
 
-      <div class="hero-tools">
-        <a class="secondary-btn link-btn" href="index.html">Open student app</a>
-        <a class="secondary-btn link-btn" href="parent-sample.csv" download>Download sample CSV</a>
-      </div>
-    </header>
+  <header class="parent-header">
+    <div>
+      <div class="parent-logo">LearnNest <span>Parent Dashboard</span></div>
+    </div>
+    <a href="index.html" class="pill-btn" style="text-decoration:none;font-size:13px;">Open Student App</a>
+  </header>
 
-    <main class="parent-layout">
-      <section class="panel">
-        <div class="panel-title-row">
-          <h2>Upload content CSV</h2>
-          <span class="panel-caption">For parent use</span>
-        </div>
-
-        <div class="upload-stack">
-          <label class="upload-box">
-            <span class="upload-title">1) Choose CSV file</span>
-            <span class="small-copy">Columns: <code>subject</code>, <code>chapter</code>, <code>topic</code>, <code>content_type</code>, <code>content_name_or_link</code>, <code>description</code>, plus <code>source_folder</code> or <code>source_path</code> for local files.</span>
-            <input id="csv-file" type="file" accept=".csv">
-          </label>
-
-          <div class="upload-box">
-            <span class="upload-title">2) Connect the parent source folder</span>
-            <span class="small-copy">Choose the root folder where the parent stores the lesson files. The CSV folder/path values will be used automatically from there.</span>
-            <div class="button-row">
-              <button id="connect-source-btn" class="secondary-btn" type="button">Connect source folder</button>
-            </div>
-            <p id="source-status" class="small-copy">No source folder connected yet.</p>
-          </div>
-
-          <div class="upload-box">
-            <span class="upload-title">3) Connect the app content folder</span>
-            <span class="small-copy">Choose the `pilot/content` folder so the page can copy files and update `content-manifest.json` automatically.</span>
-            <div class="button-row">
-              <button id="connect-folder-btn" class="secondary-btn" type="button">Connect content folder</button>
-              <button id="import-btn" class="primary-btn" type="button">Import CSV into app</button>
-            </div>
-            <p id="folder-status" class="small-copy">No content folder connected yet.</p>
-          </div>
-        </div>
-
-        <div id="status-box" class="status-box info">Upload a CSV to preview the rows.</div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-title-row">
-          <h2>CSV preview</h2>
-          <span class="panel-caption">Rows to import</span>
-        </div>
-        <div id="preview-wrap" class="table-wrap">
-          <p class="empty-copy">No CSV loaded yet.</p>
-        </div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-title-row">
-          <h2>How the import works</h2>
-          <span class="panel-caption">Current pilot rules</span>
-        </div>
-
-        <ul class="tip-list">
-          <li><strong>YouTube rows</strong> are saved as <code>type: "youtube"</code> and embedded in the student app.</li>
-          <li><strong>Video / PDF / PPT / audio</strong> rows use the CSV <code>source_folder</code> or <code>source_path</code> to find files automatically.</li>
-          <li>If you include an optional <code>chapter</code> column, files go into <code>content/Subject/Chapter/Topic/</code>.</li>
-          <li>Because of browser security, you still need to connect the parent source root folder and the app <code>content</code> folder once.</li>
-        </ul>
-
-        <div class="sample-table-wrap">
-          <table class="data-table compact-table">
-            <thead>
-              <tr>
-                <th>subject</th>
-                <th>chapter</th>
-                <th>topic</th>
-                <th>content_type</th>
-                <th>content_name_or_link</th>
-                <th>description</th>
-                <th>source_folder</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Mathematics</td>
-                <td>Algebra Foundations</td>
-                <td>Quadratic Equations</td>
-                <td>youtube</td>
-                <td>https://www.youtube.com/watch?v=VIDEO_ID</td>
-                <td>Intro lesson</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>Mathematics</td>
-                <td>Algebra Foundations</td>
-                <td>Quadratic Equations</td>
-                <td>pdf</td>
-                <td>quadratic-notes.pdf</td>
-                <td>Revision notes</td>
-                <td>Maths/Algebra Foundations/Quadratic Equations</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-title-row">
-          <h2>Import results</h2>
-          <span class="panel-caption">Latest run</span>
-        </div>
-        <div id="result-wrap">
-          <p class="empty-copy">No import has been run yet.</p>
-        </div>
-      </section>
-    </main>
+  <!-- Quick Links -->
+  <div class="pcard">
+    <div class="pcard-title">Quick Links</div>
+    <div class="quick-links">
+      <a class="qlink" href="https://docs.google.com/spreadsheets/d/1LfxDKr9vX0inr6FgahPC5wyIHwjfaeQHtPhd0oEGmy0/edit" target="_blank" rel="noopener">
+        <span class="qlink-icon">📋</span>
+        <span class="qlink-label">Content Sheet</span>
+        <span class="qlink-sub">Add videos, PDFs, slides</span>
+      </a>
+      <a class="qlink" href="https://docs.google.com/spreadsheets/d/1ETh_n0VZLEWJFXk31bbhsb34zKZ6Q-REA7bLPHTwnKM/edit" target="_blank" rel="noopener">
+        <span class="qlink-icon">📖</span>
+        <span class="qlink-label">Metadata Sheet</span>
+        <span class="qlink-sub">Chapter summaries</span>
+      </a>
+      <a class="qlink" href="https://drive.google.com" target="_blank" rel="noopener">
+        <span class="qlink-icon">☁️</span>
+        <span class="qlink-label">Google Drive</span>
+        <span class="qlink-sub">Upload lesson files</span>
+      </a>
+      <a class="qlink" id="refresh-link" href="#" onclick="loadStats(); return false;">
+        <span class="qlink-icon">🔄</span>
+        <span class="qlink-label">Refresh Stats</span>
+        <span class="qlink-sub">Reload from sheets</span>
+      </a>
+    </div>
   </div>
 
-  <script src="parent.js"></script>
+  <!-- Live Stats -->
+  <div class="pcard">
+    <div class="pcard-title">Content at a Glance</div>
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-num" id="stat-subjects">—</div><div class="stat-label">Subjects</div></div>
+      <div class="stat-box"><div class="stat-num" id="stat-chapters">—</div><div class="stat-label">Chapters</div></div>
+      <div class="stat-box"><div class="stat-num" id="stat-items">—</div><div class="stat-label">Content Items</div></div>
+    </div>
+    <div class="subject-rows" id="subject-rows">
+      <p class="loading-msg">Loading from Google Sheets…</p>
+    </div>
+    <div class="alert-box" id="stats-error">Could not load sheet data. Check that both sheets are shared as "Anyone with the link → Viewer".</div>
+  </div>
+
+  <!-- How to add content -->
+  <div class="pcard">
+    <div class="pcard-title">How to Add Content</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Upload the file to Google Drive</div>
+          <div class="step-desc">Right-click the file → <strong>Share</strong> → set to <strong>Anyone with the link → Viewer</strong>. Copy the link.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Open the Content Sheet</div>
+          <div class="step-desc">Add a new row. Fill in <code>Subject</code>, <code>Chapter</code>, <code>Topic</code>, <code>Content Type</code>, <code>Title</code>, and paste the Drive link into <code>file link or id</code>.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">For YouTube videos</div>
+          <div class="step-desc">Paste the YouTube URL directly into <code>file link or id</code>. Set <code>Content Type</code> to <code>youtube</code>. No Drive upload needed.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">App updates automatically</div>
+          <div class="step-desc">The student app re-reads the sheet on every launch. Changes appear within 60 seconds — no rebuild needed.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">Add a chapter summary (optional)</div>
+          <div class="step-desc">Open the Metadata Sheet and add a row with <code>Subject</code>, <code>Chapter</code>, <code>Summary</code>, and <code>Detailed Summary</code>. This appears at the top of the chapter in the student app.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subject name reference -->
+  <div class="pcard">
+    <div class="pcard-title">Subject Names (use exactly as shown)</div>
+    <table class="type-table">
+      <thead><tr><th>In Sheet</th><th>Displayed as</th></tr></thead>
+      <tbody>
+        <tr><td><span class="type-tag">IT</span></td><td>Information Technology</td></tr>
+        <tr><td><span class="type-tag">SP</span></td><td>Secretarial Practice</td></tr>
+        <tr><td><span class="type-tag">Accountancy</span></td><td>Book-Keeping &amp; Accountancy</td></tr>
+        <tr><td><span class="type-tag">Economics</span></td><td>Economics</td></tr>
+        <tr><td><span class="type-tag">OCM</span></td><td>Organisation of Commerce &amp; Management</td></tr>
+        <tr><td><span class="type-tag">English</span></td><td>English Yuvakbharati</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Content type reference -->
+  <div class="pcard">
+    <div class="pcard-title">Content Type Reference</div>
+    <table class="type-table">
+      <thead><tr><th>Content Type</th><th>What to put in "file link or id"</th></tr></thead>
+      <tbody>
+        <tr><td><span class="type-tag">youtube</span></td><td>YouTube video URL (auto-detected)</td></tr>
+        <tr><td><span class="type-tag">pdf</span></td><td>Google Drive PDF link or file ID</td></tr>
+        <tr><td><span class="type-tag">pptx</span></td><td>Google Drive PowerPoint link or file ID</td></tr>
+        <tr><td><span class="type-tag">docx</span></td><td>Google Drive Word doc link or file ID</td></tr>
+        <tr><td><span class="type-tag">xlsx</span></td><td>Google Drive Excel link or file ID</td></tr>
+        <tr><td><span class="type-tag">gdoc</span></td><td>Google Docs URL (auto-detected)</td></tr>
+        <tr><td><span class="type-tag">gslides</span></td><td>Google Slides URL (auto-detected)</td></tr>
+        <tr><td><span class="type-tag">gsheet</span></td><td>Google Sheets URL (auto-detected)</td></tr>
+        <tr><td><span class="type-tag">audio</span></td><td>Google Drive audio file link or file ID</td></tr>
+        <tr><td><span class="type-tag">image</span></td><td>Google Drive image link or file ID</td></tr>
+        <tr><td><span class="type-tag">link</span></td><td>Any external URL</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- /parent-wrap -->
+
+<script src="parent.js"></script>
 </body>
 </html>

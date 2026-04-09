@@ -2,18 +2,21 @@
 // Keys match the exact subject names used in topics.md and content-manifest.json.
 // Add new entries here whenever a new subject is added.
 const SUBJECT_CONFIG = {
+  // Full names (used in offline fallback files)
   'Information Technology Standard XII':                 { color: '#0f766e', bg: '#f0fdfa', icon: '💻', label: 'IT' },
   'Secretarial Practice Standard XII':                   { color: '#7c3aed', bg: '#f5f3ff', icon: '📋', label: 'Sec. Practice' },
   'Book-Keeping and Accountancy Standard XII':           { color: '#be185d', bg: '#fdf2f8', icon: '🧾', label: 'Accountancy' },
   'Economics Standard XII':                             { color: '#0891b2', bg: '#ecfeff', icon: '📈', label: 'Economics' },
   'Organisation of Commerce and Management Standard XII':{ color: '#ea580c', bg: '#fff7ed', icon: '🏢', label: 'OCM' },
   'English Yuvakbharati Standard XII':                   { color: '#16a34a', bg: '#f0fdf4', icon: '📖', label: 'English' },
-  // fallbacks for pilot sample data
-  'Mathematics':  { color: '#2563eb', bg: '#eff6ff', icon: '∑',  label: 'Maths' },
-  'Science':      { color: '#16a34a', bg: '#f0fdf4', icon: '⚗',  label: 'Science' },
-  'English':      { color: '#16a34a', bg: '#f0fdf4', icon: '📖', label: 'English' },
-  'SST':          { color: '#7c3aed', bg: '#f5f3ff', icon: '🌏', label: 'SST' },
-  'default':      { color: '#6b7280', bg: '#f9fafb', icon: '📚', label: '' }
+  // Abbreviated names (used in Google Sheets)
+  'IT':          { color: '#0f766e', bg: '#f0fdfa', icon: '💻', label: 'IT' },
+  'SP':          { color: '#7c3aed', bg: '#f5f3ff', icon: '📋', label: 'Sec. Practice' },
+  'Accountancy': { color: '#be185d', bg: '#fdf2f8', icon: '🧾', label: 'Accountancy' },
+  'Economics':   { color: '#0891b2', bg: '#ecfeff', icon: '📈', label: 'Economics' },
+  'OCM':         { color: '#ea580c', bg: '#fff7ed', icon: '🏢', label: 'OCM' },
+  'English':     { color: '#16a34a', bg: '#f0fdf4', icon: '📖', label: 'English' },
+  'default':     { color: '#6b7280', bg: '#f9fafb', icon: '📚', label: '' }
 };
 
 const TYPE_ICONS = {

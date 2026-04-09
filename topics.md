@@ -1,8 +1,8 @@
-﻿# Subjects, Chapters & Topics
+# LearnNest — HSC Commerce Subjects, Chapters & Topics
+# Offline fallback structure. Live data comes from Google Sheets.
+# Subject names match abbreviated names used in Google Sheets.
 
-## Generated from App Metadata
-
-## Information Technology Standard XII
+## IT
 ### Advanced Web Designing
 - Overview
 ### Introduction to SEO
@@ -16,7 +16,7 @@
 ### E-Commerce and E-Governance
 - Overview
 
-## Secretarial Practice Standard XII
+## SP
 ### Introduction To Corporate Finance
 - Overview
 ### Sources of Corporate Finance
@@ -42,10 +42,10 @@
 ### Stock Exchange
 - Overview
 
-## Book-Keeping and Accountancy Standard XII
+## Accountancy
 ### Introduction to Partnership and Partnership Final Accounts
 - Overview
-### Accounts of Ã¢â¬ËNot for ProfitÃ¢â¬â¢ Concerns
+### Accounts of 'Not for Profit' Concerns
 - Overview
 ### Reconstitution of Partnership (Admission of Partner)
 - Overview
@@ -64,7 +64,7 @@
 ### Computer In Accounting
 - Overview
 
-## Economics Standard XII
+## Economics
 ### Introduction to Micro and Macro Economics
 - Overview
 ### Utility Analysis
@@ -86,7 +86,7 @@
 ### Foreign Trade of India
 - Overview
 
-## Organisation of Commerce and Management Standard XII
+## OCM
 ### Principles of Management
 - Overview
 ### Functions of Management
@@ -104,10 +104,10 @@
 ### Marketing
 - Overview
 
-## English Yuvakbharati Standard XII
-### An AstrologerÃ¢â¬â¢s Day
+## English
+### An Astrologer's Day
 - Overview
-### On Saying Ã¢â¬ÅPleaseÃ¢â¬Â
+### On Saying "Please"
 - Overview
 ### The Cop and the Anthem
 - Overview
@@ -157,4 +157,3 @@
 - Overview
 ### The Sign of Four
 - Overview
-
