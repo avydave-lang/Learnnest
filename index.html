@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>LearnNest</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Splash / loading screen -->
+  <div id="app-loader" class="loader-screen">
+    <div class="loader-logo">LearnNest</div>
+    <div class="loader-skel-stack">
+      <div class="skel skel-wide"></div>
+      <div class="skel skel-card"></div>
+      <div class="skel skel-card skel-short"></div>
+    </div>
+  </div>
+
+  <!-- Main app (hidden until data loads) -->
+  <div id="app-shell" class="app-shell" style="display:none">
+
+    <!-- ── SCREEN: Home ───────────────────────────────────────── -->
+    <div id="screen-home" class="screen active">
+      <header class="app-header">
+        <div class="app-header-left">
+          <span class="app-logo">LearnNest</span>
+          <span id="streak-badge" class="streak-badge"></span>
+        </div>
+        <div class="app-header-right">
+          <button id="search-toggle" class="icon-btn" aria-label="Search" title="Search">🔍</button>
+          <a href="parent.html" class="icon-btn" title="Parent upload">⚙️</a>
+        </div>
+      </header>
+      <div id="search-bar" class="search-bar" style="display:none">
+        <input id="search-input" type="text" placeholder="Search subjects, chapters, topics…" autocomplete="off">
+        <button id="search-clear" class="icon-btn">✕</button>
+      </div>
+      <div class="screen-scroll">
+        <div id="continue-card" class="continue-card-wrap"></div>
+        <div id="focus-card" class="focus-card" style="display:none"></div>
+        <section class="home-section">
+          <h2 class="section-title">Subjects</h2>
+          <div id="subject-grid" class="subject-grid"></div>
+        </section>
+        <section class="home-section" id="revision-section" style="display:none">
+          <h2 class="section-title">
+            Needs Revision
+            <span id="revision-count" class="count-badge"></span>
+          </h2>
+          <div id="revision-list" class="list-stack"></div>
+        </section>
+        <section class="home-section">
+          <h2 class="section-title">Recent</h2>
+          <div id="recent-list"></div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ── SCREEN: Subject (chapter accordion) ───────────────── -->
+    <div id="screen-subject" class="screen">
+      <header class="screen-header">
+        <button class="back-btn" id="back-subject">‹ Back</button>
+        <div class="screen-title-row">
+          <span id="subject-header-icon" class="subject-icon-lg"></span>
+          <span id="subject-header-name" class="screen-title-text"></span>
+        </div>
+        <span id="subject-header-pct" class="screen-header-pct"></span>
+      </header>
+      <div class="screen-scroll" id="chapters-scroll">
+        <div id="chapters-accordion"></div>
+      </div>
+    </div>
+
+    <!-- ── SCREEN: Content viewer ─────────────────────────────── -->
+    <div id="screen-viewer" class="screen">
+      <header class="screen-header">
+        <button class="back-btn" id="back-viewer">‹ Back</button>
+        <div class="viewer-crumb" id="viewer-crumb">
+          <div class="viewer-crumb-path"></div>
+          <div class="viewer-crumb-topic"></div>
+        </div>
+        <div class="viewer-actions">
+          <button id="bookmark-btn" class="icon-btn" title="Bookmark"></button>
+          <button id="complete-btn" class="pill-btn" type="button"></button>
+        </div>
+      </header>
+      <div class="topic-nav-bar">
+        <button id="prev-btn" class="topic-nav-btn" title="Previous topic">‹</button>
+        <span id="topic-nav-label" class="topic-nav-label"></span>
+        <button id="next-btn" class="topic-nav-btn" title="Next topic">›</button>
+      </div>
+      <div class="screen-scroll" id="viewer-scroll">
+        <div id="viewer-summary"></div>
+        <div id="viewer-cards"></div>
+        <div style="height:88px"></div>
+      </div>
+      <!-- Floating notes button -->
+      <button id="notes-fab" class="notes-fab" title="Study notes">📝</button>
+      <!-- Notes overlay + drawer -->
+      <div id="notes-overlay" class="notes-overlay"></div>
+      <div id="notes-drawer" class="notes-drawer">
+        <div class="notes-drawer-hdr">
+          <span class="notes-drawer-title">Study Notes</span>
+          <button id="notes-close" class="icon-btn">✕</button>
+        </div>
+        <textarea id="notes-ta" class="notes-ta" placeholder="Write revision notes, formulas, definitions…"></textarea>
+      </div>
+    </div>
+
+    <!-- ── SCREEN: Progress ───────────────────────────────────── -->
+    <div id="screen-progress" class="screen">
+      <header class="app-header">
+        <span class="app-logo">Progress</span>
+      </header>
+      <div class="screen-scroll">
+        <div id="progress-stats" class="stats-row"></div>
+        <section class="home-section">
+          <h2 class="section-title">By Subject</h2>
+          <div id="progress-bars"></div>
+        </section>
+        <section class="home-section" id="progress-revision-section" style="display:none">
+          <h2 class="section-title">Needs Revision</h2>
+          <div id="progress-revision-list" class="list-stack"></div>
+        </section>
+        <section class="home-section">
+          <h2 class="section-title">Bookmarks</h2>
+          <div id="bookmarks-list"></div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ── Bottom navigation ──────────────────────────────────── -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-nav="home">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-btn" data-nav="subjects">
+        <span class="nav-icon">📚</span>
+        <span class="nav-label">Subjects</span>
+      </button>
+      <button class="nav-btn" data-nav="progress">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Progress</span>
+      </button>
+      <button class="nav-btn" data-nav="ai">
+        <span class="nav-icon">🤖</span>
+        <span class="nav-label">AI Tutor</span>
+      </button>
+    </nav>
+
+  </div><!-- /app-shell -->
+
+  <!-- Toast lives outside app-shell so it works during the loading phase too -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

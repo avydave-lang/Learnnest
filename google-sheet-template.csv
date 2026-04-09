@@ -1,0 +1,6 @@
+subject,chapter,topic,content_type,title,file_link_or_id,description,order,is_featured,tags
+Mathematics,Algebra Foundations,Quadratic Equations,youtube,Quadratic Equations Intro,https://www.youtube.com/watch?v=VIDEO_ID,Intro lesson,1,TRUE,video intro
+Mathematics,Algebra Foundations,Quadratic Equations,pdf,Quadratic Notes,https://drive.google.com/file/d/FILE_ID/view,Revision notes PDF,2,FALSE,notes revision
+Mathematics,Algebra Foundations,Quadratic Equations,ppt,Quadratic Slides,https://drive.google.com/file/d/FILE_ID/view,Slides for the chapter,3,FALSE,slides class
+Science,Chemistry Basics,Chemical Reactions,audio,Chemical Reactions Audio,https://drive.google.com/file/d/FILE_ID/view,Audio revision summary,1,FALSE,audio revision
+English,Language Skills,Grammar,video,Grammar Video,https://drive.google.com/file/d/FILE_ID/view,Grammar walkthrough,1,FALSE,grammar video

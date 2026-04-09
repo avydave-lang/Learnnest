@@ -1,0 +1,55 @@
+{
+  "Mathematics": {
+    "Algebra Foundations": {
+      "Quadratic Equations": [
+        {
+          "title": "Quadratic Equations YouTube Lesson",
+          "type": "youtube",
+          "file": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          "description": "Embedded YouTube lesson",
+          "featured": true
+        },
+        {
+          "title": "Sample Video Lesson",
+          "type": "video",
+          "file": "content/Mathematics/Algebra Foundations/Quadratic Equations/sample-video.mp4"
+        },
+        {
+          "title": "Sample Notes PDF",
+          "type": "pdf",
+          "file": "content/Mathematics/Algebra Foundations/Quadratic Equations/sample-notes.pdf"
+        },
+        {
+          "title": "Sample Slides",
+          "type": "ppt",
+          "file": "content/Mathematics/Algebra Foundations/Quadratic Equations/sample-slides.pptx"
+        }
+      ],
+      "Arithmetic Progressions": []
+    }
+  },
+  "Science": {
+    "Chemistry Basics": {
+      "Chemical Reactions": []
+    },
+    "Biology Basics": {
+      "Life Processes": []
+    }
+  },
+  "English": {
+    "Reading Skills": {
+      "Reading Comprehension": []
+    },
+    "Language Skills": {
+      "Grammar": []
+    }
+  },
+  "SST": {
+    "History": {
+      "Indian Freedom Struggle": []
+    },
+    "World History": {
+      "World Wars": []
+    }
+  }
+}

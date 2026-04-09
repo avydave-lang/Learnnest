@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnNest Parent Upload</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Parent admin</p>
+        <h1>Parent Content Manager</h1>
+        <p class="hero-text">Upload a CSV with source folder information and update the learning library for the student app automatically.</p>
+      </div>
+
+      <div class="hero-tools">
+        <a class="secondary-btn link-btn" href="index.html">Open student app</a>
+        <a class="secondary-btn link-btn" href="parent-sample.csv" download>Download sample CSV</a>
+      </div>
+    </header>
+
+    <main class="parent-layout">
+      <section class="panel">
+        <div class="panel-title-row">
+          <h2>Upload content CSV</h2>
+          <span class="panel-caption">For parent use</span>
+        </div>
+
+        <div class="upload-stack">
+          <label class="upload-box">
+            <span class="upload-title">1) Choose CSV file</span>
+            <span class="small-copy">Columns: <code>subject</code>, <code>chapter</code>, <code>topic</code>, <code>content_type</code>, <code>content_name_or_link</code>, <code>description</code>, plus <code>source_folder</code> or <code>source_path</code> for local files.</span>
+            <input id="csv-file" type="file" accept=".csv">
+          </label>
+
+          <div class="upload-box">
+            <span class="upload-title">2) Connect the parent source folder</span>
+            <span class="small-copy">Choose the root folder where the parent stores the lesson files. The CSV folder/path values will be used automatically from there.</span>
+            <div class="button-row">
+              <button id="connect-source-btn" class="secondary-btn" type="button">Connect source folder</button>
+            </div>
+            <p id="source-status" class="small-copy">No source folder connected yet.</p>
+          </div>
+
+          <div class="upload-box">
+            <span class="upload-title">3) Connect the app content folder</span>
+            <span class="small-copy">Choose the `pilot/content` folder so the page can copy files and update `content-manifest.json` automatically.</span>
+            <div class="button-row">
+              <button id="connect-folder-btn" class="secondary-btn" type="button">Connect content folder</button>
+              <button id="import-btn" class="primary-btn" type="button">Import CSV into app</button>
+            </div>
+            <p id="folder-status" class="small-copy">No content folder connected yet.</p>
+          </div>
+        </div>
+
+        <div id="status-box" class="status-box info">Upload a CSV to preview the rows.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title-row">
+          <h2>CSV preview</h2>
+          <span class="panel-caption">Rows to import</span>
+        </div>
+        <div id="preview-wrap" class="table-wrap">
+          <p class="empty-copy">No CSV loaded yet.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title-row">
+          <h2>How the import works</h2>
+          <span class="panel-caption">Current pilot rules</span>
+        </div>
+
+        <ul class="tip-list">
+          <li><strong>YouTube rows</strong> are saved as <code>type: "youtube"</code> and embedded in the student app.</li>
+          <li><strong>Video / PDF / PPT / audio</strong> rows use the CSV <code>source_folder</code> or <code>source_path</code> to find files automatically.</li>
+          <li>If you include an optional <code>chapter</code> column, files go into <code>content/Subject/Chapter/Topic/</code>.</li>
+          <li>Because of browser security, you still need to connect the parent source root folder and the app <code>content</code> folder once.</li>
+        </ul>
+
+        <div class="sample-table-wrap">
+          <table class="data-table compact-table">
+            <thead>
+              <tr>
+                <th>subject</th>
+                <th>chapter</th>
+                <th>topic</th>
+                <th>content_type</th>
+                <th>content_name_or_link</th>
+                <th>description</th>
+                <th>source_folder</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mathematics</td>
+                <td>Algebra Foundations</td>
+                <td>Quadratic Equations</td>
+                <td>youtube</td>
+                <td>https://www.youtube.com/watch?v=VIDEO_ID</td>
+                <td>Intro lesson</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Mathematics</td>
+                <td>Algebra Foundations</td>
+                <td>Quadratic Equations</td>
+                <td>pdf</td>
+                <td>quadratic-notes.pdf</td>
+                <td>Revision notes</td>
+                <td>Maths/Algebra Foundations/Quadratic Equations</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title-row">
+          <h2>Import results</h2>
+          <span class="panel-caption">Latest run</span>
+        </div>
+        <div id="result-wrap">
+          <p class="empty-copy">No import has been run yet.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="parent.js"></script>
+</body>
+</html>
